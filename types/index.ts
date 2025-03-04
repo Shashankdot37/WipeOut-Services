@@ -1,22 +1,21 @@
-import { MouseEventHandler } from "react";
+export type CleaningFormData = {
+  serviceType: "general-cleaning" | "deep-cleaning" | "carpet-cleaning";
+  location: string;
+  bedrooms: number;
+  bathrooms: number;
+  date: string;
+  time:string;
+};
 
-export interface CustomButtonProps {
-    title:string;
-    containerStyles?:string;
-    handleClick?:MouseEventHandler<HTMLButtonElement>;
-    btnType?:"button" | "submit";
+export type RemovalFormData = {
+    from: string;
+    to: string;
+    serviceType: "furniture-removal" | "house-moving" | "office-relocation";
+    phone:number;
+    email:string;
+    date:string;
 }
 
-export interface CustomFilterProps {
-    title:string;
-    // containerStyles?:string;
-    // handleClick?:MouseEventHandler<HTMLButtonElement>;
-    // btnType?:"button" | "submit";
-}
+export type RemovalServiceType = "furniture-removal" | "house-moving" | "office-relocation"; 
 
-export interface SearchServicesProps {
-   service:string;
-   setService:(service:string)=>void
-}
-
-export type onLocationSelectProps = (lat:number, lng:number)=>void;
+export type CleaningServiceType = "general-cleaning" | "deep-cleaning" | "carpet-cleaning";

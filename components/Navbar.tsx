@@ -1,30 +1,75 @@
-import Link from "next/link"
-import Image from "next/image"
-import CustomButton from "./CustomButton"
+"use client";
+import Link from "next/link";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuList,
+} from "./ui/navigation-menu";
+import { Button } from "./ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import { FaChevronDown } from "react-icons/fa";
 
 const Navbar = () => {
   return (
-    <div>
-      <header className="w-full absolute z-10">
-        <nav className="max-w-[1440px] mx-auto flex justify-between items-center sm:px-16 px-6">
-            <Link href='/' className="flex items-center justify-center">
-            <Image src="/logo.svg"
-            alt="WipeOut logo"
-            width={118}
-            height={18}
-            className="object-contain"
-            />
-            </Link>
-
-            <CustomButton
-            title="Sign In"
-            btnType="button"
-            containerStyles="text-green-800 bg-white rounded-full min-w-[130px] border-2 border-green-500 px-10px py-10px mt-4"
-            />
-        </nav>
-      </header>
+    <div className="w-full bg-gray-200 shadow-md">
+      <div className="container flex mx-auto items-center justify-between p-4">
+        <h1 className="text-2xl font-bold">WipeOut Services</h1>
+        <NavigationMenu className="flex flex-grow justify-center">
+          <NavigationMenuList className="flex gap-6">
+            <NavigationMenuItem>
+              <Link
+                href="/"
+                className="hover:text-blue-900 transition text-gray-800"
+              >
+                Home
+              </Link>
+            </NavigationMenuItem>
+            <DropdownMenu>
+              <DropdownMenuTrigger className="hover:text-blue-600 transition cursor-pointer">
+                <div className="flex flex-row">
+                  {" "}
+                  Services <FaChevronDown
+                    className="text-gray-800 mt-1.5 ml-0.5"
+                    size={10}
+                  />{" "}
+                </div>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem className="mb-1.5">
+                  <Link href="/">Cleaning</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem className="mb-1.5">
+                  <Link href="/">Removal</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem className="mb-1.5">
+                  <Link href="/">End of the Leash Cleaning</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem className="mb-1.5">
+                  <Link href="/">Business Relocation</Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <NavigationMenuItem>
+              <Link href="/" className="hover:text-blue-600 transition">
+                About Us
+              </Link>
+            </NavigationMenuItem>
+            <Button
+              asChild
+              className="ml-auto bg-orange-600 hover:bg-orange-800"
+            >
+              <Link href="/">Contact Us</Link>
+            </Button>
+          </NavigationMenuList>
+        </NavigationMenu>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

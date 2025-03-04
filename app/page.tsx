@@ -1,14 +1,12 @@
-import { Hero,BookingAppointment } from "@/components";
-import Image from "next/image";
-import "./globals.css";
-
+import Navbar from "@/components/Navbar";
+import Main from "@/components/Main";
+import Footer from "@/components/Footer";
 export default function Home() {
   return (
-    <main className="overflow-hidden">
-      <Hero />
-      <div className="border mt-4 mb-4 mr-2 ml-2 border-gray-300">
-     <BookingAppointment/>
-     </div>
-    </main>
+    <div className="border border-gray-500">
+    <Navbar/>
+    <Main/>
+    <Footer/>
+    </div>
   );
 }
