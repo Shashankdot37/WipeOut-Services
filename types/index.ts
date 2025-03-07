@@ -19,3 +19,8 @@ export type RemovalFormData = {
 export type RemovalServiceType = "furniture-removal" | "house-moving" | "office-relocation"; 
 
 export type CleaningServiceType = "general-cleaning" | "deep-cleaning" | "carpet-cleaning";
+
+export type ToastData = {
+  message: string;
+  type:"sucess" | "error"
+}

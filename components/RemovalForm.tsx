@@ -14,16 +14,42 @@ import { useForm } from "react-hook-form";
 import { RemovalFormData } from "@/types";
 import { useState } from "react";
 import { RemovalServiceType } from "@/types";
-
+import { toast } from "sonner";
 const glassmorphism =
   "bg-white/30 p-8 rounded-lg shadow-xl space-y-6 max-w-3xl mx-auto backdrop-blur-md border border-white/30";
 
 const RemovalForm = () => {
-  const { register, handleSubmit, reset, formState:{errors}, setValue } = useForm<RemovalFormData>();
-  const[selectedService, setSelectedService] = useState<RemovalServiceType | "">("");
-  const onSubmit = (data: RemovalFormData) => {
-    console.log("Removal Booking Detail: ", data);
-    reset();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+    setValue,
+  } = useForm<RemovalFormData>();
+  const [selectedService, setSelectedService] = useState<
+    RemovalServiceType | ""
+  >("");
+  const onSubmit = async (data: RemovalFormData) => {
+    try {
+      const response = await fetch("/api/removal", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      if (response.ok) {
+        toast.success("Removal appointment booked successfully!");
+        reset();
+      }
+      else
+      {
+        return new Error("Failed to submit booking data.");
+      }
+      console.log("Removal Booking Detail: ", await response.json());
+    } catch (error) {
+      console.error("Error submitting the booking data", error);
+    }
   };
   return (
     <div className="flex justify-center mt-[5vh]">
@@ -35,10 +61,7 @@ const RemovalForm = () => {
           Removal Service Appointment
         </h2>
         <div>
-          <Label
-            htmlFor="from"
-            className="text-gray-900 mb-2"
-          >
+          <Label htmlFor="from" className="text-gray-900 mb-2">
             From
           </Label>
           <Input
@@ -71,12 +94,10 @@ const RemovalForm = () => {
             Service Type
           </Label>
           <Select
-            onValueChange={(value:RemovalServiceType)=>
-            {
-                setValue("serviceType", value );
-                setSelectedService(value);
-            }
-            }
+            onValueChange={(value: RemovalServiceType) => {
+              setValue("serviceType", value);
+              setSelectedService(value);
+            }}
           >
             <SelectTrigger className="bg-gray-200 text-gray-900 w-full">
               <SelectValue placeholder="Please select the service type." />
@@ -91,7 +112,9 @@ const RemovalForm = () => {
               </SelectItem>
             </SelectContent>
           </Select>
-          {!selectedService && <p className="text-red-500">Please select a service type</p>}
+          {!selectedService && (
+            <p className="text-red-500">Please select a service type</p>
+          )}
         </div>
         <div>
           <Label htmlFor="phone" className="text-gray-900 mb-2">
@@ -101,9 +124,17 @@ const RemovalForm = () => {
             id="phone"
             className="bg-gray-200 text-gray-900 w-full"
             placeholder="Please enter your phone number"
-            {...register("phone", {required:"Phone Number is required.", pattern: {value:/^[0-9]{10}$/,message:"Phone number must be exactly 10 digits"} })}
+            {...register("phone", {
+              required: "Phone Number is required.",
+              pattern: {
+                value: /^[0-9]{10}$/,
+                message: "Phone number must be exactly 10 digits",
+              },
+            })}
           />
-          {errors.phone && <p className="text-red-500">{errors.phone.message}</p> }
+          {errors.phone && (
+            <p className="text-red-500">{errors.phone.message}</p>
+          )}
         </div>
         <div>
           <Label htmlFor="email" className="text-gray-900 mb-2">
@@ -114,7 +145,7 @@ const RemovalForm = () => {
             className="bg-gray-200 text-gray-900 w-full"
             placeholder="Please enter your email address"
             {...register("email", {
-              pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+              pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
             })}
           />
         </div>

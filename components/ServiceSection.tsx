@@ -47,7 +47,7 @@ const ServiceSection = () => {
               key={service.id}
               className={`${glassmorphism} flex flex-col bg-white h-full`}
             >
-              <CardHeader className="">
+              <CardHeader>
                 <CardTitle className="text-xl font-bold mt-4 text-gray-800">
                   {service.title}
                 </CardTitle>

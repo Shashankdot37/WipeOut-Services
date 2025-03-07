@@ -8,8 +8,8 @@ const BookingCTA = () => {
                 <button className="bg-orange-600 hover:bg-orange-800 text-white font-bold px-6 py-3 rounded-lg text-lg shadow-lg cursor-pointer transition">
                     Book an Appointment
                 </button>
-                <a href="tel:+1234567890" className="text-lg font-bold text-gray-700 hover:text-orange-600 transition cursor-pointer">
-                    <div className="border-2 rounded-lg border-gray-500 px-4 py-2 flex flex-row justify-center items-center"><FaPhoneAlt size={20} className="text-orange-600 mr-2.5"/>+123 456 7890</div>
+                <a href="tel:+61403838360" className="text-lg font-bold text-gray-700 hover:text-orange-600 transition cursor-pointer">
+                    <div className="border-2 rounded-lg border-gray-500 px-4 py-2 flex flex-row justify-center items-center"><FaPhoneAlt size={20} className="text-orange-600 mr-2.5"/>+61 403 838 360</div>
                 
                 </a>
             </div>

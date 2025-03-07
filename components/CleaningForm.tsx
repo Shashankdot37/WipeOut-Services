@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "./ui/button";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
+import { toast } from "sonner";
 import {
   Select,
   SelectTrigger,
@@ -13,14 +14,34 @@ import {
 } from "./ui/select";
 import { CleaningFormData } from "@/types";
 import { CleaningServiceType } from "@/types";
-
 const glassmorphism =
   "bg-white/30 p-8 rounded-lg shadow-xl space-y-6 max-w-3xl mx-auto backdrop-blur-md border border-white/30";
 
 const CleaningForm = () => {
-  const onSubmit = (data: CleaningFormData) => {
-    console.log("Cleaning Booking Details: ", data);
-    reset();
+  const onSubmit = async (data: CleaningFormData) => {
+    try {
+      const response = await fetch("/api/cleaning",{
+        method:"POST",
+        headers:{
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+
+      if(response.ok)
+      {
+        toast.success("Cleaning appointment booked successfully!");
+        reset();
+      }
+      else{
+        throw new Error("Failed to submit booking!")
+      }
+      console.log("Cleaning Booking Details: ", await response.json());
+    
+    } catch (error) {
+      console.error("Error submitting the form.",error)
+    }
+    
   };
   const {
     reset,
