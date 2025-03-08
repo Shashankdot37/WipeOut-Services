@@ -41,21 +41,21 @@ const Navbar = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuItem className="mb-1.5">
-                  <Link href="/">Cleaning</Link>
+                  <Link href="/">House Moving</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem className="mb-1.5">
-                  <Link href="/">Removal</Link>
+                  <Link href="/">End of the Lease Cleaning</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem className="mb-1.5">
-                  <Link href="/">End of the Leash Cleaning</Link>
+                  <Link href="/">Office Moving</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem className="mb-1.5">
-                  <Link href="/">Business Relocation</Link>
+                  <Link href="/">Office/Commerical Cleaning</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
             <NavigationMenuItem>
-              <Link href="/" className="hover:text-blue-600 transition">
+              <Link href="/about" className="hover:text-blue-600 transition">
                 About Us
               </Link>
             </NavigationMenuItem>
@@ -63,7 +63,7 @@ const Navbar = () => {
               asChild
               className="ml-auto bg-orange-600 hover:bg-orange-800"
             >
-              <Link href="/">Contact Us</Link>
+              <Link href="tel:+61403838360">Contact Us</Link>
             </Button>
           </NavigationMenuList>
         </NavigationMenu>

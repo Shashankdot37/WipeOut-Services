@@ -76,9 +76,16 @@ const CleaningForm = () => {
               <SelectValue placeholder="Please select the service type" />
             </SelectTrigger>
             <SelectContent className="bg-gray-100 text-gray-900">
+              <SelectItem value="general-cleaning">End of Lease Cleaning</SelectItem>
+              <SelectItem value="general-cleaning">Office cleaning</SelectItem>
               <SelectItem value="general-cleaning">General Cleaning</SelectItem>
               <SelectItem value="deep-cleaning">Deep Cleaning</SelectItem>
+              <SelectItem value="general-cleaning">Regular Cleaning</SelectItem>
+              <SelectItem value="general-cleaning">Restaurant Cleaning </SelectItem>
+              <SelectItem value="general-cleaning">Construction Cleaning</SelectItem>
+              <SelectItem value="deep-cleaning">Commercial Cleaning</SelectItem>
               <SelectItem value="carpet-cleaning">Carpet Cleaning</SelectItem>
+              <SelectItem value="carpet-cleaning">Apartment Cleaning</SelectItem>
             </SelectContent>
           </Select>
           {errors.serviceType && (
