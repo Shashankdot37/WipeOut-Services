@@ -1,0 +1,8 @@
+{
+  "/api/removal/route": "app/api/removal/route.js",
+  "/api/cleaning/route": "app/api/cleaning/route.js",
+  "/booking/page": "app/booking/page.js",
+  "/services/page": "app/services/page.js",
+  "/page": "app/page.js",
+  "/admin/page": "app/admin/page.js"
+}

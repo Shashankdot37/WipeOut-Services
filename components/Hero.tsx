@@ -63,7 +63,7 @@ const Hero = () => {
         <CarouselPrevious/>
       </Carousel> */}
       <div className="inset-0 absolute flex justify-center items-center flex-col text-center text-white px-6">
-          <h1 className="text-5xl md:text-6xl font-extrabold drop-shadow-lg">WipeOut Services</h1>
+          <h1 className="text-5xl md:text-6xl font-extrabold drop-shadow-lg">Sydney Move and Clean</h1>
           <p className="text-lg md:text-2xl mt-4 drop-shadow-md max-w-2xl">Professional Cleaning & Moving Services at <b className="text-gray-100">Sydney</b>.</p>
           <Link href="tel:+61403838360">
           <button className="mt-6 bg-blue-600 hover:bg-blue-700 cursor-pointer text-white md:text-2xl font-bold py-3 px-6 rounded-lg shadow-lg transition"> <div className="flex"><FaPhoneAlt className="mr-3"/>Call Us Now: +61 403 838 360</div></button>
