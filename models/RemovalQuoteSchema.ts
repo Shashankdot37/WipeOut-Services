@@ -30,7 +30,7 @@ const RemovalQuoteSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  status: { type: String, enum: ["pending", "done"], default: "pending" },
+  status: { type: String, enum: ["pending", "done"], default: "pending" }
 });
 
 const RemovalQuote = mongoose.models.RemovalQuote || mongoose.model("RemovalQuote", RemovalQuoteSchema);

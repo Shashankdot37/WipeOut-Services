@@ -16,7 +16,7 @@ const HeadPersonnel = () => {
         <div className="text-center md:text-left">
             <h2 className="text-2xl font-bold text-gray-900">Cyrush Khadka</h2>
             <p className="text-orange-500 font-medium">Co-founder and Head Manager</p>
-            <p className="mt-3 text-gray-700 max-w-lg">With <b>4+ years</b> of experience on the field of both cleaning and removal services, Cyrush Khadka has gained the proficiency in the field. Moreover, the experiences have been gathered at the workplace of Sydney itself allowing him to get firsthand experience with the professionals and general customers of Sydney.His dedication to quality and customer satisfaction makes WipeOut Services a trusted brand.</p>
+            <p className="mt-3 text-gray-700 max-w-lg">With <b>4+ years</b> of experience on the field of both cleaning and removal services, Cyrush Khadka has gained the proficiency in the field. Moreover, the experiences have been gathered at the workplace of Sydney itself allowing him to get firsthand experience with the professionals and general customers of Sydney. His dedication to quality and customer satisfaction makes Sydney Move and Clean a trusted brand.</p>
         </div>
       </div>
     </section>

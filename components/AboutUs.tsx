@@ -15,13 +15,13 @@ const AboutUs = () => {
         >
           <CardHeader>
             <CardTitle className="text-4xl font-bold text-orange-700 mt-2 underline underline-offset-2">
-              WipeOut Services
+              Sydney Move and Clean
             </CardTitle>
           </CardHeader>
           <CardContent className="flex justify-between font-light">
             <div className="w-[30vw]">
               <p className="mb-2">
-                At WipeOut Service, we make moving easy and stress-free. Whether
+                At Sydney Move and Clean, we make moving easy and stress-free. Whether
                 you're relocating homes, offices, or need furniture removal, our
                 dedicated team ensures a smooth experience from start to finish.
                 With a focus on reliability, efficiency, and customer
@@ -32,13 +32,12 @@ const AboutUs = () => {
             </div>
             <div className="w-[30vw]">
               <p className="mb-2">
-                Founded with a vision to simplify moving, WipeOut Service is a
-                fresh and dynamic company that has quickly gained a reputation
+                Founded with a vision to simplify moving, Sydney Move and Clean is a
+                fresh and dynamic company that has come to emerge
                 for excellence. Starting with just a small team and a passion
-                for helping people transition seamlessly to new spaces, we've
-                grown into a trusted name in the industry. Our commitment to
+                for helping people transition seamlessly to new spaces, we're working relentelessly for customer satisfaction. Our commitment to
                 professionalism, affordability, and customer-first service has
-                helped us serve countless satisfied clients. As we continue to
+                helped us serve numbers of satisfied clients. As we continue to
                 expand, our mission remains the same—making moving effortless,
                 one service at a time.
               </p>
@@ -62,7 +61,7 @@ const AboutUs = () => {
             Our Mission
           </h3>
           <p className="text-gray-700">
-            At WipeOut Service, we strive to provide smooth and stress-free
+            At Sydney Move and Clean, we strive to provide smooth and stress-free
             moving experiences. Our team ensures reliability, professionalism,
             and efficiency in every relocation.
           </p>

@@ -102,6 +102,7 @@ export type CleaningForm = {
   date: string;
   time?: string;
   status: "pending" | "done";
+  adminNote?:string;
 };
 
 export type CleaningQuoteAdmin = {
@@ -137,10 +138,12 @@ export type RemovalForm = {
   email?: string;
   date: string;
   status: "pending" | "done";
+  adminNote:string;
 };
 
 export type RemovalQuoteAdmin = {
   _id: string;
+  name:string;
   from: string;
   to: string;
   serviceType: "1helper"| "1van1helper"| "1van2helpers"|"4.5ton1helper"|"4.5ton2helpers"|"4.5ton3helpers";

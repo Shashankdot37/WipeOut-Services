@@ -2,6 +2,7 @@
 import AdminButtonStatus from "./AdminButtonStatus";
 import { useEffect, useState } from "react";
 import { CleaningForm } from "@/types";
+import AdminNoteEditor from "./AdminNoteEditor";
 
 const AdminCleaningTable = () => {
   const [cleaningBookings, setCleaningBookings] = useState<CleaningForm[]>([]);
@@ -20,6 +21,13 @@ const AdminCleaningTable = () => {
     setIsClient(true);
     fetchBookings();
   }, []);
+  const updateNoteInState=(bookingId:string, newNote:string)=>
+  {
+    setCleaningBookings((prevBookings)=>
+    prevBookings.map((booking)=>
+      booking._id === bookingId?{...booking,adminNote:newNote}:booking
+    ))
+  }
   return (
     <table className="w-full border-collapse border border-gray-300">
       <thead>
@@ -34,6 +42,7 @@ const AdminCleaningTable = () => {
           <th className="border p-2">Time</th>
           <th className="border p-2">Status</th>
           <th className="border p-2">Actions</th>
+          <th className="border p-2">Admin Note</th>
         </tr>
       </thead>
       <tbody>
@@ -64,6 +73,14 @@ const AdminCleaningTable = () => {
                   bookingId={booking._id}
                   type="cleaning"
                   status={booking.status}
+                />
+              </td>
+              <td className="border p-2">
+                <AdminNoteEditor
+                bookingId={booking._id}
+                initialNote={booking.adminNote}
+                onUpdateNote={updateNoteInState}
+                type="cleaning"
                 />
               </td>
             </tr>

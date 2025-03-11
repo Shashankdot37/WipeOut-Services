@@ -28,6 +28,10 @@ const RemovalFormSchema = new mongoose.Schema({
     required: true,
   },
   status: { type: String, enum: ["pending", "done"], default: "pending" },
+  adminNote: {
+    type: String,
+    default: "",
+  },
 });
 
 const RemovalForm = mongoose.models.RemovalForm || mongoose.model("RemovalForm", RemovalFormSchema);

@@ -20,7 +20,7 @@ const glassmorphism =
 const CleaningQuote = () => {
   const onSubmit = async (data: CleaningQuoteData) => {
     try {
-      const response = await fetch("/api/cleaning",{
+      const response = await fetch("/api/cleaningQuote",{
         method:"POST",
         headers:{
           "Content-Type": "application/json"
@@ -60,8 +60,22 @@ const CleaningQuote = () => {
         className={`${glassmorphism} w-[60vw]`}
       >
         <h2 className="text-gray-800 text-3xl font-semibold">
-          Cleaning Service Appointment
+          Cleaning Service Quote
         </h2>
+        <div>
+          <Label htmlFor="name" className="mb-2">
+            Name
+          </Label>
+          <Input
+            id="name"
+            type="text"
+            {...register("name", { required: "Please enter the name" })}
+            className="bg-gray-200 text-gray-900"
+          />
+          {errors.name && (
+            <p className="text-red-500">{errors.name.message}</p>
+          )}
+        </div>
         <div>
           <Label htmlFor="serviceType" className="text-gray-900 mb-2">
             Service Type
@@ -200,7 +214,7 @@ const CleaningQuote = () => {
           type="submit"
           className="w-full bg-orange-700 hover:bg-orange-900 text-white font-bold cursor-pointer"
         >
-          Book Now
+          Get a Free Quote
         </Button>
       </form>
     </div>

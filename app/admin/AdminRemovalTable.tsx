@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import AdminButtonStatus from "./AdminButtonStatus";
 import { RemovalForm } from "@/types";
+import AdminNoteEditor from "./AdminNoteEditor";
 
 const AdminRemovalTable = () => {
   const [removalData, setRemovalData] = useState<RemovalForm[]>([]);
@@ -25,7 +26,15 @@ const AdminRemovalTable = () => {
 
   useEffect(()=>{
     console.log("Updated removal data: ", removalData)
-  },[removalData])
+  },[removalData]);
+
+  const updateNoteInState=(bookingId:string,newNote:string)=>{
+    setRemovalData((prevData)=>
+      prevData.map((booking)=>
+        booking._id === bookingId?{...booking,adminNote:newNote}:booking
+      )
+    )
+  }
   return (
     <table className="w-full border-collapse border border-gray-300">
       <thead>
@@ -38,6 +47,7 @@ const AdminRemovalTable = () => {
           <th className="border p-2">Date</th>
           <th className="border p-2">Status</th>
           <th className="border p-2">Actions</th>
+          <th className="border p-2">Admin Note</th>
         </tr>
       </thead>
       <tbody>
@@ -60,6 +70,14 @@ const AdminRemovalTable = () => {
                 type="removal"
                 bookingId={booking._id}
                 status={booking.status}
+              />
+            </td>
+            <td className="border p-2">
+              <AdminNoteEditor
+              onUpdateNote={updateNoteInState}
+              type="removal"
+              bookingId={booking._id}
+              initialNote={booking.adminNote}
               />
             </td>
           </tr>

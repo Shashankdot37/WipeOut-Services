@@ -11,7 +11,7 @@ import {
 } from "./ui/select";
 import { Input } from "./ui/input";
 import { useForm } from "react-hook-form";
-import { RemovalFormData } from "@/types";
+import { RemovalQuoteData } from "@/types";
 import { useState } from "react";
 import { RemovalServiceType } from "@/types";
 import { toast } from "sonner";
@@ -25,13 +25,13 @@ const RemovalQuote = () => {
     reset,
     formState: { errors },
     setValue,
-  } = useForm<RemovalFormData>();
+  } = useForm<RemovalQuoteData>();
   const [selectedService, setSelectedService] = useState<
     RemovalServiceType | ""
   >("");
-  const onSubmit = async (data: RemovalFormData) => {
+  const onSubmit = async (data: RemovalQuoteData) => {
     try {
-      const response = await fetch("/api/removal", {
+      const response = await fetch("/api/removalQuote", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +39,7 @@ const RemovalQuote = () => {
         body: JSON.stringify(data),
       });
       if (response.ok) {
-        toast.success("Removal appointment booked successfully!");
+        toast.success("Removal Quote received successfully!");
         reset();
       }
       else
@@ -58,8 +58,22 @@ const RemovalQuote = () => {
         className={`${glassmorphism} w-[60vw]`}
       >
         <h2 className="text-gray-800 text-3xl font-semibold">
-          Removal Service Appointment
+          Removal Service Quote
         </h2>
+        <div>
+          <Label htmlFor="name" className="mb-2">
+            Name
+          </Label>
+          <Input
+            id="name"
+            type="text"
+            {...register("name", { required: "Please enter the name" })}
+            className="bg-gray-200 text-gray-900"
+          />
+          {errors.name && (
+            <p className="text-red-500">{errors.name.message}</p>
+          )}
+        </div>
         <div>
           <Label htmlFor="from" className="text-gray-900 mb-2">
             From
@@ -163,7 +177,7 @@ const RemovalQuote = () => {
           type="submit"
           className="w-full bg-orange-700 hover:bg-orange-900 text-white font-bold cursor-pointer"
         >
-          Book Now
+          Get a Free Quote
         </Button>
       </form>
     </div>

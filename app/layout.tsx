@@ -3,7 +3,7 @@ import "./globals.css";
 import {Toaster} from "sonner";
 
 export const metadata: Metadata = {
-  title: "WipeOut Services",
+  title: "Sydney Move and Clean",
   description: "Cleaning and Removal Service in Sydney",
 };
 

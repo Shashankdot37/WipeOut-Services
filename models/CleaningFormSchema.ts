@@ -35,6 +35,10 @@ const CleaningFormSchema = new mongoose.Schema({
     type: String
   },
   status: { type: String, enum: ["pending", "done"], default: "pending" },
+  adminNote: {
+    type: String,
+    default: "", 
+  },
 });
 
 const CleaningForm = mongoose.models.CleaningForm || mongoose.model("CleaningForm", CleaningFormSchema);

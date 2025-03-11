@@ -7,12 +7,17 @@ import {
   FaEnvelope,
   FaMapMarkedAlt,
 } from "react-icons/fa";
+import Image from "next/image";
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-gray-300 py-12">
       <div className="container mx-auto px-4 grid md:grid-cols-3 gap-8">
         <div>
-          <h2 className="text-2xl font-bold text-white">WipeOut Services</h2>
+          <div className="flex items-center">
+          <h2 className="text-2xl font-bold text-white">Sydney Move and Clean</h2>
+          <Image src="/logoNegative.png" width={50} height={50} alt="Logo with truck and text SMC written on it"/>
+          </div>
+          
           <p className="mt-3 text-gray-400">
             Your trusted partner for cleaning & moving services.
           </p>
@@ -28,18 +33,18 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link href="/" className="hover:text-orange-400 transition">
+              <Link href="/services" className="hover:text-orange-400 transition">
                 Services
               </Link>
             </li>
             <li>
-              <Link href="/" className="hover:text-orange-400 transition">
+              <Link href="/about" className="hover:text-orange-400 transition">
                 About Us
               </Link>
             </li>
             <li>
-              <Link href="/" className="hover:text-orange-400 transition">
-                Contact
+              <Link href="tel:+61403838360" className="hover:text-orange-400 transition">
+                Call Us
               </Link>
             </li>
           </ul>
@@ -52,7 +57,7 @@ const Footer = () => {
           <ul className="mt-3 space-y-2">
             <li className="flex items-center gap-2">
               <FaPhoneAlt className="text-orange-400" />
-              <a href="tel:+1234567890">+123 456 7890</a>
+              <a href="tel:61403838360">+61 403 838 360</a>
             </li>
             <li className="flex items-center gap-2">
               <FaEnvelope className="text-orange-400" />
