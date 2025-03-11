@@ -5,7 +5,7 @@ import { NextResponse,NextRequest } from "next/server";
 export async function PATCH(request:NextRequest,{params}:{params:{id:string}})
 {
 try {
-    await connectToDB;
+    await connectToDB();
     const {id} = params;
     const updatedBooking = await CleaningForm.findByIdAndUpdate(
         id,
@@ -27,14 +27,15 @@ export async function PUT(request:NextRequest, {params}:{params:{id:string}})
     try {
         await connectToDB();
         const {id} = params;
-        const {adminNote} = await request.json();
+        const body = await request.json();
+
         const updatedBooking = await CleaningForm.findByIdAndUpdate(
         id,
-        {adminNote},
+        {adminNote:body.adminNote},
         {new:true}
         )
 
-        if(!adminNote)
+        if(!body.adminNote)
         {
             return NextResponse.json({error:"Admin Note is required."},{status:400})
         }
