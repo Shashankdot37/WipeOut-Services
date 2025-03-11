@@ -12,7 +12,7 @@ const RemovalFormSchema = new mongoose.Schema({
   serviceType: {
     type: String,
     required: true,
-    enum: ["furniture-removal", "house-moving", "office-relocation"],
+    enum: ["1helper", "1van1helper", "1van2helpers","4.5ton1helper","4.5ton2helpers","4.5ton3helpers"],
   },
   phone: {
     type: String,

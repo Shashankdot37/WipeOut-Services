@@ -103,12 +103,12 @@ const RemovalForm = () => {
               <SelectValue placeholder="Please select the service type." />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="furniture-removal">Helper</SelectItem>
-              <SelectItem value="furniture-removal">1 Van + 1 Helper</SelectItem>
-              <SelectItem value="furniture-removal">1 Van + 2 Helpers</SelectItem>
-              <SelectItem value="furniture-removal">4.5 ton truck + 1 helper</SelectItem>
-              <SelectItem value="furniture-removal">4.5 Truck + 2 helpers</SelectItem>
-              <SelectItem value="furniture-removal">4.5 Truck + 3 helpers</SelectItem>
+              <SelectItem value="1helper">Helper</SelectItem>
+              <SelectItem value="1van1helper">1 Van + 1 Helper</SelectItem>
+              <SelectItem value="1van2helpers">1 Van + 2 Helpers</SelectItem>
+              <SelectItem value="4.5ton1helper">4.5 ton truck + 1 helper</SelectItem>
+              <SelectItem value="4.5ton2helpers">4.5 ton Truck + 2 helpers</SelectItem>
+              <SelectItem value="4.5ton3helpers">4.5 ton Truck + 3 helpers</SelectItem>
             </SelectContent>
           </Select>
           {!selectedService && (
