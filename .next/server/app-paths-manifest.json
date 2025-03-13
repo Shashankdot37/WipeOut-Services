@@ -1,10 +1,5 @@
 {
-  "/api/cleaning/[id]/route": "app/api/cleaning/[id]/route.js",
-  "/api/removal/route": "app/api/removal/route.js",
-  "/api/removal/[id]/route": "app/api/removal/[id]/route.js",
-  "/api/cleaning/route": "app/api/cleaning/route.js",
+  "/services/page": "app/services/page.js",
   "/page": "app/page.js",
-  "/about/page": "app/about/page.js",
-  "/admin/page": "app/admin/page.js",
-  "/adminQuote/page": "app/adminQuote/page.js"
+  "/about/page": "app/about/page.js"
 }

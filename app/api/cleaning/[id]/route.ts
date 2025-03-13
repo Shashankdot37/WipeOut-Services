@@ -1,5 +1,6 @@
 import connectToDB from "@/lib/mongoose";
 import CleaningForm from "@/models/CleaningFormSchema";
+import { error } from "console";
 import { NextResponse,NextRequest } from "next/server";
 
 export async function PATCH(request:NextRequest,{params}:{params:{id:string}})
@@ -22,11 +23,16 @@ try {
 }
 }
 
-export async function PUT(request:NextRequest, {params}:{params:{id:string}})
+export async function PUT(request:NextRequest)
 {
     try {
         await connectToDB();
-        const {id} = params;
+        const url = new URL(request.nextUrl)
+        const id = url.pathname.split('/').pop()
+        if(!id)
+        {
+            return NextResponse.json({error:"Booking Id is required"},{status:400})
+        }
         const body = await request.json();
 
         const updatedBooking = await CleaningForm.findByIdAndUpdate(
