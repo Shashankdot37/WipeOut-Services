@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "./ui/button";
 import { Label } from "./ui/label";
@@ -16,6 +16,28 @@ import { CleaningQuoteData } from "@/types";
 import { CleaningServiceType } from "@/types";
 const glassmorphism =
   "bg-white/30 p-8 rounded-lg shadow-xl space-y-6 max-w-3xl mx-auto backdrop-blur-md border border-white/30";
+
+function calculateCleaningQuote(bedrooms:number, bathrooms:number){
+  const basePrices:Record<string,number> = {
+    "1-1": 230,
+    "2-1": 310,
+    "3-2": 470,
+    "4-2": 590,
+    "5-2": 650,
+  };
+
+  let baseBedrooms = Math.min(5, bedrooms);
+  let baseBathrooms = baseBedrooms <= 2? 1:2;
+
+  let baseKey = `${baseBedrooms}-${baseBathrooms}`;
+  let basePrice = basePrices[baseKey] || 0;
+
+  let extraBedrooms = Math.max(0, bedrooms - baseBedrooms);
+  let extraBathrooms = Math.max(0, bathrooms - baseBathrooms);
+  let extraCost = (extraBathrooms + extraBedrooms) * 80;
+
+  return basePrice + extraCost;
+}
 
 const CleaningQuote = () => {
   const onSubmit = async (data: CleaningQuoteData) => {
@@ -52,6 +74,28 @@ const CleaningQuote = () => {
   } = useForm<CleaningQuoteData>();
 
   const [selectedService, setSelectedService] = useState<CleaningServiceType | "">("");
+  const[bedrooms, setBedrooms]=useState<number | "">("");
+  const[bathrooms, setBathrooms]=useState<number | "">("");
+  const[totalPrice, setTotalPrice]=useState<number | "">("");
+
+  useEffect(()=>{
+    if(selectedService === "end-of-lease-cleaning" && bedrooms !== "" && bathrooms !==""){setTotalPrice(calculateCleaningQuote(bedrooms, bathrooms))}
+    else{
+      setTotalPrice("");
+    }
+     },[bedrooms, bathrooms,selectedService])
+
+  const handleBedroomChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value === "" ? "" : Number(e.target.value);
+    setBedrooms(value);
+    if (value !== "") setValue("bedrooms", value);
+  };
+  
+  const handleBathroomChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value === "" ? "" : Number(e.target.value);
+    setBathrooms(value);
+    if (value !== "") setValue("bathrooms", value);
+  };
 
   return (
     <div className="flex justify-center mt-[5vh]">
@@ -168,7 +212,8 @@ const CleaningQuote = () => {
               inputMode="numeric"
               pattern="[0-9]*"
               min={1}
-              {...register("bedrooms", { valueAsNumber: true })}
+              value={bedrooms}
+              onChange={handleBedroomChange}
             ></Input>
           </div>
 
@@ -182,7 +227,8 @@ const CleaningQuote = () => {
               inputMode="numeric"
               pattern="[0-9]*"
               min={1}
-              {...register("bathrooms", { valueAsNumber: true })}
+              value={bathrooms}
+              onChange={handleBathroomChange}
             ></Input>
           </div>
         </div>
@@ -210,6 +256,16 @@ const CleaningQuote = () => {
             {...register("time")}
           />
         </div>
+
+        <div className="mt-4 p-4 bg-gray-100 rounded-md text-center shadow-md">
+          <h3 className="text-xl font-semibold text-gray-800">Total Price</h3>
+          {selectedService == "end-of-lease-cleaning"?(<p className="text-2xl text-orange-600 font-bold">Aus ${totalPrice}</p>):(<div className="text-lg text-gray-700 font-semibold">
+              <p>Please contact us directly for a quote for service other than End of Lease Cleaning. </p><br/>
+              <p className="text-sm text-gray-600">Prices may vary depending on the conditions so our team has to analyze the area to fix the price.</p>
+            </div>)}
+          
+        </div>
+
         <Button
           type="submit"
           className="w-full bg-orange-700 hover:bg-orange-900 text-white font-bold cursor-pointer"

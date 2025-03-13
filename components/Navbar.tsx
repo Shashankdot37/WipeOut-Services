@@ -18,7 +18,7 @@ import Image from "next/image";
 const Navbar = () => {
   return (
     <div className="w-full bg-gray-200 shadow-md">
-      <div className="container flex mx-auto items-center justify-between p-4">
+      <div className="container flex mx-auto items-center justify-between">
         <div className="flex justify-center items-center">
         <h1 className="text-2xl font-bold">Sydney Move and Clean</h1>
           <Image

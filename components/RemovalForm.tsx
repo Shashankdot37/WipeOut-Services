@@ -19,6 +19,7 @@ const glassmorphism =
   "bg-white/30 p-8 rounded-lg shadow-xl space-y-6 max-w-3xl mx-auto backdrop-blur-md border border-white/30";
 
 const RemovalForm = () => {
+
   const {
     register,
     handleSubmit,
@@ -29,6 +30,8 @@ const RemovalForm = () => {
   const [selectedService, setSelectedService] = useState<
     RemovalServiceType | ""
   >("");
+  
+  
   const onSubmit = async (data: RemovalFormData) => {
     try {
       const response = await fetch("/api/removal", {

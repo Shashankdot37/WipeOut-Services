@@ -29,6 +29,24 @@ const RemovalQuote = () => {
   const [selectedService, setSelectedService] = useState<
     RemovalServiceType | ""
   >("");
+  
+  const calculatePrice = (service:RemovalServiceType) : string =>{
+      const prices:Record<RemovalServiceType,string> ={
+        "1helper": "$40 per hr per man - minimum 2hr",
+        "1van1helper": "$60 per hr - minimum 2hr",
+        "1van2helpers": "$95 per hr - minimum 2hr",
+        "4.5ton1helper": "$85 per hr - minimum 2hr",
+        "4.5ton2helpers": "$110 per hr - minimum 2hr",
+        "4.5ton3helpers": "$145 per hr - minimum 2hr",
+      }
+      return prices[service] || "";
+    }
+    const handleServiceChange = (value: RemovalServiceType) => {
+      setValue("serviceType", value);
+      setSelectedService(value);
+      setEstimatedPrice(calculatePrice(value));
+    };
+    const[estimatedPrice, setEstimatedPrice] = useState<string>("");
   const onSubmit = async (data: RemovalQuoteData) => {
     try {
       const response = await fetch("/api/removalQuote", {
@@ -108,10 +126,7 @@ const RemovalQuote = () => {
             Service Type
           </Label>
           <Select
-            onValueChange={(value: RemovalServiceType) => {
-              setValue("serviceType", value);
-              setSelectedService(value);
-            }}
+            onValueChange={handleServiceChange}
           >
             <SelectTrigger className="bg-gray-200 text-gray-900 w-full">
               <SelectValue placeholder="Please select the service type." />
@@ -173,6 +188,12 @@ const RemovalQuote = () => {
             {...register("date", { required: "Please select a date" })}
           />
         </div>
+        {selectedService && estimatedPrice && (
+          <div className="mt-4 p-4 bg-gray-100 rounded-md">
+            <p className="text-xl font-semibold text-gray-800">Estimated Price:</p>
+            <p className="text-2xl text-orange-600 font-bold">Aus {estimatedPrice}</p>
+          </div>
+        )}
         <Button
           type="submit"
           className="w-full bg-orange-700 hover:bg-orange-900 text-white font-bold cursor-pointer"
