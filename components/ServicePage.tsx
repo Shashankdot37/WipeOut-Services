@@ -80,8 +80,6 @@ const ServicePage = () => {
             <li className="p-2">Shower glass and mirrors</li>
             <li className="p-2">All area - general cleaning</li>
           </ul>
-          
-          <p className="mt-4 text-gray-700">Oven (if not included reduces $35)</p>
           <div className="flex justify-center">
           <Card className="border-l-4 border-yellow-500 bg-yellow-50 shadow-md mt-6 w-[40vw]">
             <CardContent className="p-4 flex items-end gap-5">

@@ -12,33 +12,46 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { FaChevronDown } from "react-icons/fa";
+import { FaChevronDown, FaTimes, FaBars } from "react-icons/fa";
 import Image from "next/image";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <div className="w-full bg-gray-200 shadow-md">
-      <div className="container flex mx-auto items-center justify-between">
-        <div className="flex justify-center items-center">
-        <h1 className="text-2xl font-bold">Sydney Move and Clean</h1>
+      <div className="container flex mx-auto items-center justify-between md:px-8">
+        <div className="flex items-center">
+          <h1 className="md:text-2xl text-xl font-bold">
+            Sydney Move and Clean
+          </h1>
           <Image
             src="/logo.png"
             alt="Logo with truck written SMC on it."
-            width={80}
-            height={80}
+            width={60}
+            height={60}
           />
         </div>
-
-        <NavigationMenu className="flex flex-grow justify-center">
+        {/*HamBurger Menu (For small screens)*/}
+        <button
+          className="md:hidden text-gray-900 text-2xl my-3"
+          onClick={() => {
+            setMobileMenuOpen(!mobileMenuOpen);
+          }}
+        >
+          {mobileMenuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+        {/* For desktop navigation */}
+        <NavigationMenu className="hidden md:flex flex-grow justify-center">
           <NavigationMenuList className="flex gap-6">
-            <NavigationMenuItem className="border border-gray-700 hover:bg-gray-900 px-4 py-2 rounded-lg cursor-pointer bg-gray-400">
-              <Link
-                href="/services"
-                className="transition text-white font-semibold"
-              >
+            <Link
+              href="/services"
+              className="transition text-white font-semibold"
+            >
+              <NavigationMenuItem className="border border-gray-700 hover:bg-gray-900 px-4 py-2 rounded-lg cursor-pointer bg-gray-400">
                 Prices
-              </Link>
-            </NavigationMenuItem>
+              </NavigationMenuItem>
+            </Link>
             <NavigationMenuItem>
               <Link
                 href="/"
@@ -92,6 +105,66 @@ const Navbar = () => {
           </NavigationMenuList>
         </NavigationMenu>
       </div>
+
+      {/* For navigation on mobile phone */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-gray-300 w-full flex flex-col items-center space-y-4 py-4">
+          <Link
+            href="/"
+            className="text-lg text-gray-900"
+            onClick={() => {
+              setMobileMenuOpen(false);
+            }}
+          >
+            Home
+          </Link>
+          <Link
+            href="/services"
+            className="text-lg text-gray-900"
+            onClick={() => {
+              setMobileMenuOpen(false);
+            }}
+          >
+            Prices
+          </Link>
+          <Link
+            href="/about"
+            className="text-lg text-gray-900"
+            onClick={() => {
+              setMobileMenuOpen(false);
+            }}
+          >
+            About Us
+          </Link>
+          <DropdownMenu>
+            <DropdownMenuTrigger className="text-gray-900 text-lg">
+              <div className="flex items-center">
+                Services
+                <FaChevronDown className="text-gray-900 mt-1 ml-1" size={10} />
+              </div>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="bg-gray-100 p-2 rounded-md shadow-md">
+              <DropdownMenuItem>
+                <Link href="/services#moving-services">House Moving</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/services#end-of-lease">End of Lease Cleaning</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/services#moving-services">Office Moving</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/services#other-cleaning-services">
+                  Office/Commercial Cleaning
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <Button asChild className="bg-orange-600 hover:bg-orange-800">
+            <Link href="tel:+61403838360">Contact Us</Link>
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
