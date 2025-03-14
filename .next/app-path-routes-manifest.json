@@ -1,0 +1,17 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/api/cleaning/route": "/api/cleaning",
+  "/api/cleaning/[id]/route": "/api/cleaning/[id]",
+  "/api/cleaningQuote/[id]/route": "/api/cleaningQuote/[id]",
+  "/api/cleaningQuote/route": "/api/cleaningQuote",
+  "/api/removal/[id]/route": "/api/removal/[id]",
+  "/api/removal/route": "/api/removal",
+  "/api/removalQuote/[id]/route": "/api/removalQuote/[id]",
+  "/api/removalQuote/route": "/api/removalQuote",
+  "/admin/page": "/admin",
+  "/about/page": "/about",
+  "/adminQuote/page": "/adminQuote",
+  "/booking/page": "/booking",
+  "/page": "/",
+  "/services/page": "/services"
+}

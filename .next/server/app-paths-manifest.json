@@ -1,5 +1,17 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/cleaning/route": "app/api/cleaning/route.js",
+  "/api/cleaning/[id]/route": "app/api/cleaning/[id]/route.js",
+  "/api/cleaningQuote/[id]/route": "app/api/cleaningQuote/[id]/route.js",
+  "/api/cleaningQuote/route": "app/api/cleaningQuote/route.js",
+  "/api/removal/[id]/route": "app/api/removal/[id]/route.js",
+  "/api/removal/route": "app/api/removal/route.js",
+  "/api/removalQuote/[id]/route": "app/api/removalQuote/[id]/route.js",
+  "/api/removalQuote/route": "app/api/removalQuote/route.js",
+  "/admin/page": "app/admin/page.js",
+  "/about/page": "app/about/page.js",
+  "/adminQuote/page": "app/adminQuote/page.js",
+  "/booking/page": "app/booking/page.js",
   "/page": "app/page.js",
-  "/services/page": "app/services/page.js",
-  "/about/page": "app/about/page.js"
+  "/services/page": "app/services/page.js"
 }
